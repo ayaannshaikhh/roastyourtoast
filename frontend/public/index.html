@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <link rel="icon" href="/img/favicon.png">
+    <title>Roast Your Toast</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+  </head>
+  <body style="font-family: 'Inter', sans-serif; line-height: 1.6; color:#ffffff; background-color: #000000;">
+    <h1 style="text-align: center;">🔥</h1>
+    <h3 style="text-align: center;">Get heavily judged on your Spotify playlist!</h3>
+    <h1 style="text-align: center;">Roast Your Toast</h1>
+    <ul style="margin-bottom: 75px;"></ul>
+    <h3 style="text-align: center;">Put your Spotify playlist below! (Must be public)</h3>
+    
+    <div style="text-align: center;">
+      <input id="playlistInput" 
+        type="url" 
+        placeholder="Paste your playlist's URL"
+        style="
+          padding: 12px 20px; 
+          border-radius: 1000px; 
+          border: 1px solid #AA4203; 
+          font-size: 16px; 
+          width: 300px;
+          outline: none;
+          margin-bottom: 10px;
+      ">
+      <br>
+      <button onclick="sendToBackend()" 
+        style="
+          padding: 10px 20px; 
+          border-radius: 1000px; 
+          border: none; 
+          background-color: #AA4203; 
+          color: #fff; 
+          font-size: 16px; 
+          cursor: pointer;
+      ">
+        Roast me 🔥
+      </button>
+    </div>
+
+    <div id="roastResult" style="text-align: center; margin-top: 30px; font-size: 18px;"></div>
+
+    <script>
+      async function sendToBackend() {
+        const url = document.getElementById('playlistInput').value;
+
+        const res = await fetch('http://localhost:3000/roast-playlist', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ playlistUrl: url })
+        });
+
+        const data = await res.json();
+        document.getElementById('roastResult').innerText = data.roast || data.error;
+      }
+    </script>
+  </body>
+</html>
