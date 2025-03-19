@@ -1,5 +1,6 @@
 # Roast Your Toast
 A simple and easy-to-use Spotify playlist roaster that reads your playlist and roasts it based off the music choices and genres.
+
 ![image](https://github.com/user-attachments/assets/19b80cb3-5e84-41ad-9477-dd5a80622cf0)
 
 ## How It Works
