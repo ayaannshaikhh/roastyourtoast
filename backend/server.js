@@ -15,7 +15,7 @@ app.post('/roast-playlist', async (req, res) => {
     try {
         const { playlistUrl } = req.body;
         if (!playlistUrl) {
-            return res.status(400).json({ error: 'No playlist URL provided' });
+            return res.status(400).json({ error: 'No playlist link provided!' });
         }
 
         const playlistData = await getPlaylistData(playlistUrl);
@@ -28,7 +28,7 @@ app.post('/roast-playlist', async (req, res) => {
         res.json({ roast });
     } catch (err) {
         console.error('Backend error:', err);
-        res.status(500).json({ error: 'Something went wrong with roasting the playlist!' });
+        res.status(500).json({ error: 'Something went wrong with roasting the playlist.\nMake sure the playlist is public and the link is valid!' });
     }
 });
 

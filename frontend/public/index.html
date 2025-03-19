@@ -5,43 +5,39 @@
     <link rel="icon" href="/img/favicon.png">
     <title>Roast Your Toast</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/frontend/src/styles.css">
   </head>
-  <body style="font-family: 'Inter', sans-serif; line-height: 1.6; color:#ffffff; background-color: #000000;">
-    <h1 style="text-align: center;">🔥</h1>
-    <h3 style="text-align: center;">Get heavily judged on your Spotify playlist!</h3>
-    <h1 style="text-align: center;">Roast Your Toast</h1>
-    <ul style="margin-bottom: 75px;"></ul>
-    <h3 style="text-align: center;">Put your Spotify playlist below! (Must be public)</h3>
-    
-    <div style="text-align: center;">
-      <input id="playlistInput" 
-        type="url" 
-        placeholder="Paste your playlist's URL"
-        style="
-          padding: 12px 20px; 
-          border-radius: 1000px; 
-          border: 1px solid #AA4203; 
-          font-size: 16px; 
-          width: 300px;
-          outline: none;
-          margin-bottom: 10px;
-      ">
-      <br>
-      <button onclick="sendToBackend()" 
-        style="
-          padding: 10px 20px; 
-          border-radius: 1000px; 
-          border: none; 
-          background-color: #AA4203; 
-          color: #fff; 
-          font-size: 16px; 
-          cursor: pointer;
-      ">
-        Roast me 🔥
-      </button>
+  <body>
+    <!-- Floating hearts -->
+    <div class="floating-heart"></div>
+    <div class="floating-heart"></div>
+    <div class="floating-heart"></div>
+    <div class="floating-heart"></div>
+
+    <ul style="margin-bottom: 175px;"></ul>
+    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px; position: absolute; top: 10px; left: 20px;">
+      <h2>Roast Your Toast</h2>
     </div>
 
-    <div id="roastResult" style="text-align: center; margin-top: 30px; font-size: 18px;"></div>
+    <h1 style="font-size:xx-large">Feel the heat of getting burnt, and get roasted on your music choice!</h1>
+
+    <h3>Put your Spotify playlist below! (Must be public.)</h3>
+    <div class="content">
+      <input id="playlistInput" type="url" placeholder="Paste your playlist's URL">
+      <br>
+      <button onclick="sendToBackend()">Roast 🔥</button>
+    </div>
+
+    <div id="roastResult"></div>
+
+    <div class="content">
+      <h3>How to copy a playlist link:</h3>
+      <img src="/img/tutorial.gif" alt="Tutorial" style="width: 100%; max-width: 500px; border: 2px solid #AA4203; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+    </div>
+
+    <footer>
+      <p>&copy; 2025 Roast Your Toast. All rights reserved.</p>
+    </footer>
 
     <script>
       async function sendToBackend() {
