@@ -3,7 +3,7 @@ import 'dotenv/config';
 
 export async function generateGeminiRoast(playlistData) {
     const { name, tracks } = playlistData;
-    const trackList = tracks.slice(0, 5)
+    const trackList = tracks
         .map((t) => `"${t.name}" by ${t.artist}`)
         .join(', ');
 
