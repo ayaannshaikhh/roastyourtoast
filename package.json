@@ -1,0 +1,19 @@
+{
+  "name": "roastyourtoast",
+  "version": "1.0.0",
+  "description": "A simple and easy-to-use Spotify playlist roaster that reads your playlist and roasts it based off the music choices and genres.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node backend/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/clxrityy/roastyourtoast.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/clxrityy/roastyourtoast/issues"
+  },
+  "homepage": "https://github.com/clxrityy/roastyourtoast#readme"
+}
