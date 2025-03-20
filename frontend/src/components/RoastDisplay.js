@@ -17,7 +17,26 @@ export default function RoastDisplay({ playlistData, roast }) {
             <li key={i} style={{ margin: '0.3rem 0' }}>{track}</li>
           ))}
         </ul>
-        {roast && <p style={{ marginTop: '1rem', color: 'orange', maxWidth: '600px', fontSize: '1.2rem' }}>{roast}</p>}
+        {roast && (
+            <p
+              style={{
+                marginTop: '0.5rem', // closer to the button
+                color: '#A84300',
+                fontFamily: 'Inter, sans-serif',
+                maxWidth: '500px',
+                textAlign: 'center',
+                marginLeft: 'auto',
+                marginRight: 'auto',
+                fontWeight: '600',
+                fontSize: '1rem',
+                lineHeight: '1.3',
+                letterSpacing: '-0.25px',
+                padding: '0', // no padding
+              }}
+            >
+              {roast}
+            </p>
+          )}
       </div>
     );
   }
