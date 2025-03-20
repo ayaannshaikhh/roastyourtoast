@@ -1,5 +1,7 @@
 import express from 'express';
 import cors from 'cors';
+import path from 'path';
+import { fileURLToPath } from 'url';
 import { getPlaylistData } from './spotify.js';
 import { generateGeminiRoast } from './gemini.js';
 
@@ -7,8 +9,13 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+app.use(express.static(path.join(__dirname, '../public')));
+
 app.get('/', (req, res) => {
-    res.send('Backend server is running.');
+    res.sendFile(path.join(__dirname, '../public/index.html'));
 });
 
 app.post('/roast-playlist', async (req, res) => {
@@ -19,7 +26,6 @@ app.post('/roast-playlist', async (req, res) => {
         }
 
         const playlistData = await getPlaylistData(playlistUrl);
-
         const roast = await generateGeminiRoast({
             name: `Playlist from ${playlistUrl}`,
             tracks: playlistData,
@@ -28,7 +34,9 @@ app.post('/roast-playlist', async (req, res) => {
         res.json({ roast });
     } catch (err) {
         console.error('Backend error:', err);
-        res.status(500).json({ error: 'Something went wrong with roasting the playlist.\nMake sure the playlist is public and the link is valid!' });
+        res.status(500).json({
+            error: 'Something went wrong with roasting the playlist.\nMake sure the playlist is public and the link is valid!',
+        });
     }
 });
 

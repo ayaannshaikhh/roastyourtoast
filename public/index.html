@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <link rel="icon" href="/img/favicon.png">
+    <title>Roast Your Toast</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/frontend/src/styles.css">
+  </head>
+  <body>
+    <!-- Floating hearts -->
+    <ul style="margin-bottom: 175px;"></ul>
+    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px; position: absolute; top: 10px; left: 20px;">
+      <h2>Roast Your Toast</h2>
+    </div>
+
+    <h1 style="font-size:xx-large">Feel the heat of getting burnt, and get roasted on your music choice!</h1>
+
+    <h3>Put your Spotify playlist below! (Must be public.)</h3>
+    <div class="content">
+      <input id="playlistInput" type="url" placeholder="Paste your playlist's URL">
+      <br>
+      <button onclick="sendToBackend()">Roast 🔥</button>
+    </div>
+
+    <div id="roastResult"></div>
+
+    <div class="content">
+      <h3>How to copy a playlist link:</h3>
+      <img src="/img/tutorial.gif" alt="Tutorial" style="width: 100%; max-width: 500px; border: 2px solid #AA4203; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+    </div>
+
+    <footer>
+      <p>&copy; 2025 Roast Your Toast. All rights reserved.</p>
+    </footer>
+
+    <script>
+      async function sendToBackend() {
+        const url = document.getElementById('playlistInput').value;
+
+        const res = await fetch('http://localhost:3000/roast-playlist', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ playlistUrl: url })
+        });
+
+        const data = await res.json();
+        document.getElementById('roastResult').innerText = data.roast || data.error;
+      }
+    </script>
+  </body>
+</html>
