@@ -5,7 +5,7 @@
     <link rel="icon" href="/img/favicon.png">
     <title>Roast Your Toast</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/frontend/src/styles.css">
+    <link rel="stylesheet" href="/styles.css">
   </head>
   <body>
     <!-- Floating hearts -->
@@ -38,7 +38,7 @@
       async function sendToBackend() {
         const url = document.getElementById('playlistInput').value;
 
-        const res = await fetch('http://localhost:3000/roast-playlist', {
+        const res = await fetch('/roast-playlist', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ playlistUrl: url })
