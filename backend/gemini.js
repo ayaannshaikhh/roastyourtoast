@@ -10,7 +10,6 @@ export async function generateGeminiRoast(playlistData) {
     const prompt = `
         Roast this Spotify playlist. Be witty, funny, and borderline brutal but lighthearted.
         Playlist name: "${name}".
-        Top 5 Tracks: ${trackList}
         Respond with 2-3 sentences.
     `;
 
